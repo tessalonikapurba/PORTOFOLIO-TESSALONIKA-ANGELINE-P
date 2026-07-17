@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, createContext, useContext } from "react";
 import { Github, Instagram, Linkedin, ExternalLink, Mail, MapPin, Send, Award, Star, Menu, X, Moon, Sun } from "lucide-react";
-import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import { ImageWithFallback } from "./components/figma/ImageWithFallback";
 import profilePhoto from "@/imports/angel.jpg";
 import certPufa from "@/imports/PRINT__5___5_.png";
 import certPust from "@/imports/24__1_.png";
@@ -311,6 +311,9 @@ const leadershipOrgs = [
     role: "Member of Communication & Multimedia Division",
     icon: "🏛️",
     color: "#9b6dff",
+
+    photo: null,
+
     responsibilities: [
       "Created visual content and promotional materials for organizational activities.",
       "Managed event documentation and social media content.",
@@ -324,6 +327,9 @@ const leadershipOrgs = [
     role: "Head of Media Division",
     icon: "📱",
     color: "#4f8eff",
+
+    photo: null,
+
     responsibilities: [
       "Led the media team in creating promotional and visual content for organizational activities.",
       "Coordinated content planning and publication across digital platforms.",
@@ -641,7 +647,7 @@ function ExperienceSection() {
                       }}
                     >
                       <ImageWithFallback
-                        src={vol.photo!}
+                        src={vol.photos[currentSlideIndex]}
                         alt={vol.title}
                         className="w-full h-auto object-cover"
                         style={{ aspectRatio: "16/9" }}
@@ -1131,46 +1137,12 @@ export default function App() {
         <section id="projects" className="relative z-10 py-16 md:py-24 px-4 sm:px-6">
           <div className="max-w-5xl mx-auto">
             <p className="text-xs font-mono tracking-widest uppercase mb-2" style={{ color: t.primary, fontFamily: "Space Mono, monospace" }}>MY WORK</p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12" style={{ fontFamily: "Space Grotesk, sans-serif", color: t.fg }}>Projects</h2>
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-8 md:mb-12" style={{ fontFamily: "Space Grotesk, sans-serif", color: t.fg }}>Featured Projects</h2>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
-              {/* Project 1 — Library Management System */}
-              <div className="group rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
-                style={{ background: t.cardBg, border: `1px solid ${t.cardBorder}`, backdropFilter: "blur(12px)", boxShadow: `0 4px 24px ${t.primary}10` }}>
-                {/* Thumbnail */}
-                <div className="relative h-44 flex items-center justify-center overflow-hidden"
-                  style={{ background: `linear-gradient(135deg, ${t.primary}25, ${t.accent}15)`, borderBottom: `1px solid ${t.cardBorder}` }}>
-                  <div className="flex flex-col items-center gap-2 opacity-60 group-hover:opacity-90 transition-opacity">
-                    <span className="text-5xl">📚</span>
-                  </div>
-                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                    style={{ background: `radial-gradient(circle at center, ${t.primary}12, transparent 70%)` }} />
-                </div>
-                {/* Content */}
-                <div className="p-6 flex flex-col gap-4">
-                  <div>
-                    <h3 className="text-lg font-semibold mb-2" style={{ color: t.fg, fontFamily: "Space Grotesk, sans-serif" }}>
-                      Library Management System
-                    </h3>
-                    <p className="text-sm leading-relaxed" style={{ color: t.fgMuted }}>
-                      A desktop application for managing library operations — book cataloging, member management, borrowing and return tracking, with an intuitive GUI interface.
-                    </p>
-                  </div>
-                  <div className="flex flex-wrap gap-2">
-                    {["Python", "SQLite", "Tkinter", "CRUD Operations"].map(tag => (
-                      <span key={tag} className="text-xs px-2.5 py-1 rounded-full font-mono"
-                        style={{ background: `${t.primary}12`, color: t.primary, border: `1px solid ${t.primary}22`, fontFamily: "Space Mono, monospace" }}>
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                  <a href="https://github.com/tessalonikapurba" target="_blank" rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-[1.03] mt-auto"
-                    style={{ background: `${t.primary}15`, color: t.primary, border: `1px solid ${t.primary}30`, fontFamily: "Space Grotesk, sans-serif" }}>
-                    <Github size={16} /> View on GitHub
-                  </a>
-                </div>
-              </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              
+              {/* Project 1 */}
+              {/* (Silakan salin kode kartu Project 1 kamu yang utuh di sini jika ada) */}
 
               {/* Project 2 — Face Attendance System */}
               <div className="group rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
@@ -1202,15 +1174,247 @@ export default function App() {
                       </span>
                     ))}
                   </div>
-                  <a href="https://github.com/tessalonikapurba" target="_blank" rel="noopener noreferrer"
+                  <a
+                    href="https://github.com/tessalonikapurba/Face-Attandance-system/tree/main/Smart-Attendance-System-main"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-[1.03] mt-auto"
-                    style={{ background: `${t.accent}15`, color: t.accent, border: `1px solid ${t.accent}30`, fontFamily: "Space Grotesk, sans-serif" }}>
+                    style={{
+                      background: `${t.primary}15`,
+                      color: t.primary,
+                      border: `1px solid ${t.primary}30`,
+                      fontFamily: "Space Grotesk, sans-serif",
+                    }}
+                  >
                     <Github size={16} /> View on GitHub
                   </a>
                 </div>
               </div>
-            </div>
-          </div>
+
+              {/* Project 3 — Hotel Booking System */}
+              <div className="group rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
+                style={{ background: t.cardBg, border: `1px solid ${t.cardBorder}`, backdropFilter: "blur(12px)", boxShadow: `0 4px 24px ${t.accent}10` }}>
+                {/* Thumbnail */}
+                <div className="relative h-44 flex items-center justify-center overflow-hidden"
+                  style={{ background: `linear-gradient(135deg, ${t.accent}25, ${t.purple}15)`, borderBottom: `1px solid ${t.cardBorder}` }}>
+                  <div className="flex flex-col items-center gap-2 opacity-60 group-hover:opacity-90 transition-opacity">
+                    <span className="text-5xl">🏨</span>
+                  </div>
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{ background: `radial-gradient(circle at center, ${t.accent}12, transparent 70%)` }} />
+                </div>
+                {/* Content */}
+                <div className="p-6 flex flex-col gap-4">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-2" style={{ color: t.fg, fontFamily: "Space Grotesk, sans-serif" }}>
+                      Hotel Booking System
+                    </h3>
+                    <p className="text-sm leading-relaxed" style={{ color: t.fgMuted }}>
+                      A desktop-based hotel booking management system developed with Java Swing
+                      and MySQL. The application allows staff to manage room availability,
+                      guest reservations, check-in/check-out processes, and booking records
+                      through a user-friendly interface.
+                    </p>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {["Java", "Java Swing", "MySQL", "Apache NetBeans", "Ant"].map(tag => (
+                      <span key={tag} className="text-xs px-2.5 py-1 rounded-full font-mono"
+                        style={{ background: `${t.accent}12`, color: t.accent, border: `1px solid ${t.accent}22`, fontFamily: "Space Mono, monospace" }}>
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <a
+                    href="https://github.com/tessalonikapurba/Hotel-Booking-management-system/tree/main/Hotel-Booking-Management-System-main"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-[1.03] mt-auto"
+                    style={{
+                      background: `${t.primary}15`,
+                      color: t.primary,
+                      border: `1px solid ${t.primary}30`,
+                      fontFamily: "Space Grotesk, sans-serif",
+                    }}
+                  >
+                    <Github size={16} /> View on GitHub
+                  </a>
+                </div>
+              </div>
+              {/* Project 4 — Library Management Borrow System */}
+<div
+  className="group rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
+  style={{
+    background: t.cardBg,
+    border: `1px solid ${t.cardBorder}`,
+    backdropFilter: "blur(12px)",
+    boxShadow: `0 4px 24px ${t.accent}10`
+  }}
+>
+  {/* Thumbnail */}
+  <div
+    className="relative h-44 flex items-center justify-center overflow-hidden"
+    style={{
+      background: `linear-gradient(135deg, ${t.accent}25, ${t.purple}15)`,
+      borderBottom: `1px solid ${t.cardBorder}`
+    }}
+  >
+    <div className="flex flex-col items-center gap-2 opacity-60 group-hover:opacity-90 transition-opacity">
+      <span className="text-5xl">📚</span>
+    </div>
+
+    <div
+      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      style={{
+        background: `radial-gradient(circle at center, ${t.accent}12, transparent 70%)`
+      }}
+    />
+  </div>
+
+  {/* Content */}
+  <div className="p-6 flex flex-col gap-4">
+    <div>
+      <h3
+        className="text-lg font-semibold mb-2"
+        style={{ color: t.fg, fontFamily: "Space Grotesk, sans-serif" }}
+      >
+        Library Management Borrow System
+      </h3>
+
+      <p
+        className="text-sm leading-relaxed"
+        style={{ color: t.fgMuted }}
+      >
+        A web-based library management system that simplifies book borrowing,
+        returns, and inventory management. It allows librarians to manage
+        book records efficiently while providing users with an organized
+        borrowing experience.
+      </p>
+    </div>
+  
+
+    <div className="flex flex-wrap gap-2">
+      {["PHP", "MySQL", "HTML", "CSS"].map(tag => (
+        <span
+          key={tag}
+          className="text-xs px-2.5 py-1 rounded-full font-mono"
+          style={{
+            background: `${t.accent}12`,
+            color: t.accent,
+            border: `1px solid ${t.accent}22`,
+            fontFamily: "Space Mono, monospace"
+          }}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+
+    <a
+      href="https://github.com/tessalonikapurba/Library-management-borrow-system-/tree/main/Library-Borrow-System-main"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-[1.03] mt-auto"
+      style={{
+        background: `${t.primary}15`,
+        color: t.primary,
+        border: `1px solid ${t.primary}30`,
+        fontFamily: "Space Grotesk, sans-serif",
+      }}
+    >
+      <Github size={16} /> View on GitHub
+    </a>
+  </div>
+</div>
+{/* Project 5 — Tax Consultant Website */}
+<div
+  className="group rounded-2xl overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl"
+  style={{
+    background: t.cardBg,
+    border: `1px solid ${t.cardBorder}`,
+    backdropFilter: "blur(12px)",
+    boxShadow: `0 4px 24px ${t.accent}10`
+  }}
+>
+  {/* Thumbnail */}
+  <div
+    className="relative h-44 flex items-center justify-center overflow-hidden"
+    style={{
+      background: `linear-gradient(135deg, ${t.accent}25, ${t.purple}15)`,
+      borderBottom: `1px solid ${t.cardBorder}`
+    }}
+  >
+    <div className="flex flex-col items-center gap-2 opacity-60 group-hover:opacity-90 transition-opacity">
+      <span className="text-5xl">📊</span>
+    </div>
+
+    <div
+      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+      style={{
+        background: `radial-gradient(circle at center, ${t.accent}12, transparent 70%)`
+      }}
+    />
+  </div>
+
+  {/* Content */}
+  <div className="p-6 flex flex-col gap-4">
+    <div>
+      <h3
+        className="text-lg font-semibold mb-2"
+        style={{
+          color: t.fg,
+          fontFamily: "Space Grotesk, sans-serif"
+        }}
+      >
+        Tax Consultant Website
+      </h3>
+
+      <p
+        className="text-sm leading-relaxed"
+        style={{ color: t.fgMuted }}
+      >
+        A clean and responsive multi-page website developed for a tax consultancy
+        firm. The platform showcases professional tax services, payroll
+        solutions, client consultation information, and a user login gateway
+        through an intuitive and modern interface.
+      </p>
+    </div>
+
+    <div className="flex flex-wrap gap-2">
+      {["HTML5", "CSS3"].map(tag => (
+        <span
+          key={tag}
+          className="text-xs px-2.5 py-1 rounded-full font-mono"
+          style={{
+            background: `${t.accent}12`,
+            color: t.accent,
+            border: `1px solid ${t.accent}22`,
+            fontFamily: "Space Mono, monospace"
+          }}
+        >
+          {tag}
+        </span>
+      ))}
+    </div>
+
+    <a
+      href="https://github.com/tessalonikapurba/Tax-consultant-/tree/main/Tax-Consultant-Website-main"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-all duration-300 hover:scale-[1.03] mt-auto"
+      style={{
+        background: `${t.primary}15`,
+        color: t.primary,
+        border: `1px solid ${t.primary}30`,
+        fontFamily: "Space Grotesk, sans-serif",
+      }}
+    >
+      <Github size={16} /> View on GitHub
+    </a>
+  </div>
+</div>
+
+            </div> {/* Penutup grid */}
+          </div> {/* Penutup max-w-5xl */}
         </section>
 
         {/* ─── CONTACT ─── */}
@@ -1329,13 +1533,11 @@ export default function App() {
         </section>
 
         {/* ─── FOOTER ─── */}
-        <footer className="relative z-10 py-8 px-6 text-center" style={{ borderTop: `1px solid ${t.cardBorder}` }}>
-          <p className="text-sm font-mono" style={{ color: t.fgMuted, fontFamily: "Space Mono, monospace" }}>
-            © 2025 <span style={{ color: t.primary }}>Tessalonika Angeline Purba</span>
-          </p>
-        </footer>
-
-        <style>{`
+        <><footer className="relative z-10 py-8 px-6 text-center" style={{ borderTop: `1px solid ${t.cardBorder}` }}>
+    <p className="text-sm font-mono" style={{ color: t.fgMuted, fontFamily: "Space Mono, monospace" }}>
+      © {new Date().getFullYear()} <span style={{ color: t.primary }}>Tessalonika Angeline Purba</span>
+    </p>
+  </footer><style>{`
           @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
           ::-webkit-scrollbar { width: 6px; }
           ::-webkit-scrollbar-track { background: transparent; }
@@ -1343,7 +1545,7 @@ export default function App() {
           ::-webkit-scrollbar-thumb:hover { background: rgba(155,109,255,0.5); }
           html, body { width: 100%; max-width: 100%; overflow-x: hidden; scroll-behavior: smooth; }
           * { box-sizing: border-box; }
-        `}</style>
+        `}</style></>
       </div>
     </ThemeCtx.Provider>
   );
